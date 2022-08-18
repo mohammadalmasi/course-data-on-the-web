@@ -1,0 +1,28 @@
+@prefix exv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#> .
+@prefix ex: <https://cu.opendata.cz/course-data-on-the-web/resource/flights/> .
+
+ex:flight/xy1234 a exv:Flight ;
+  exv:number "XY1234" .
+  exv:hasAircraft  ex:aircraft/457854124 .
+
+ex:aircraft/457854124 a exv:Aircraft ;
+  exv:registration "OK-ABC" ;
+  exv:serialNumber "457854124" ;
+  exv:age 38 .
+
+ex:airport/PRG exv:code "PRG" ;
+  exv:name "Václav Havel Airport Prague"@en, "Letiště Václava Havla Praha"@cs .
+
+ex:event/xy1234dep a exv:FlightEvent ;
+  exv:scheduled "2022-07-07T15:20:00"^^xsd:dateTime ;
+  exv:estimated "2022-07-07T15:45:00"^^xsd:dateTime ;
+  exv:actual "2022-07-07T15:40:00"^^xsd:dateTime ;
+  exv:visiblity "Foggy"@en ;
+  exv:happededAt ex:airport/PRG .
+
+ex:event/xy1234arr a exv:FlightEvent ;
+  exv:scheduled "2022-07-07T17:51:00"^^xsd:dateTime ;
+  exv:estimated "2022-07-07T18:00:00"^^xsd:dateTime ;
+  exv:actual "2022-07-07T17:59:00"^^xsd:dateTime ;
+  exv:visiblity "Clear-sky, windy"@en ;
+  exv:happededAt ex:airport/DUB .

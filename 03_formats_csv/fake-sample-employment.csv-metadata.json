@@ -1,0 +1,25 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "url": "fake-sample-employment.csv",
+    "tableSchema": {
+        "columns": [{
+            "name": "code",
+            "titles": "code",
+            "dc:description": "The code of the airport the employment is measured for.",
+            "datatype": "string",
+            "required": true
+        },{
+            "name": "year",
+            "titles": "year",
+            "dc:description": "The year of the measurement.",
+            "datatype": "gYear",
+            "required": true
+        },{
+            "titles": "number of employees",
+            "dc:description": "Measured employment at the airport and year.",
+            "datatype": "nonNegativeInteger",
+            "required": true
+        }],
+        "primaryKey": ["code", "year"]
+    }
+}

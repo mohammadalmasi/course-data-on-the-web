@@ -1,0 +1,25 @@
+@startuml
+    class CivicStructure {
+        code
+        name
+    }
+    
+    class Trip {
+        departure time
+        arrival time
+    }
+    
+    class Vehicle {
+        number
+    }
+    
+    class Employment {
+        year
+        number of employees
+    }
+    
+    Trip "0..*" -right-> "1" CivicStructure : departs from
+    Trip "0..*" -right-> "1" CivicStructure : arrives to
+    Trip "0..*" -left-> "0..*" Vehicle : has vehicle
+    CivicStructure "1" -right-> "0..*" Employment : has employment
+@enduml

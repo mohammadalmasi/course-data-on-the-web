@@ -1,0 +1,101 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix exv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#> .
+@prefix otherv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/machines#> .
+
+exv:Flight a rdfs:Class ;
+  rdfs:label "An international passenger flight."@en ;
+  rdfs:commnet "An international passenger flight."@en .
+
+exv:Aircraft a rdfs:Class ;
+  rdfs:subClassOf otherv:FlyingMachine ;
+  rdfs:label "Aircraft"@en ;
+  rdfs:comment "A machine that is able to fly by gaining support from the air other than the reactions of the air against the earth’s surface."@en .
+
+exv:FlightEvent a rdfs:Class ;
+  rdfs:label "Flight event"@en ;
+  rdfs:comment "Any event that may occur during a flight."@en .
+
+exv:Airport a rdfs:Class ;
+  rdfs:label "Airport"@en .
+
+exv:number a rdf:Property ;
+  rdfs:label "flight number"@en ;
+  rdfs:domain exv:Flight ;
+  rdfs:range xsd:string ;
+  rdfs:comment "The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'."@en .
+
+exv:registration a rdf:Property ;
+  rdfs:domain exv:Aircraft ;
+  rdfs:range xsd:string ;
+  rdfs:label "aircraft registration number"@en .
+
+exv:serialNumber a rdf:Property ;
+  rdfs:domain exv:Aircraft ;
+  rdfs:range xsd:string ;
+  rdfs:label "aircraft serial number"@en .
+
+exv:age a rdf:Property ;
+  rdfs:label "aircraft age"@en ;
+  rdfs:domain exv:Aircraft ;
+  rdfs:range xsd:integer ;
+  rdfs:comment "The age of aircraft in years counted from the start of its operation on commercial flights. It is specified in months."@en .
+
+exv:hasAircraft a rdf:Property ;
+  rdfs:label "has aircraft"@en ;
+  rdfs:domain exv:Flight ;
+  rdfs:range exv:Aircraft ;
+  rdfs:comment "The aircraft deployed on this flight."@en .
+
+exv:scheduled a rdf:Property ;
+  rdfs:label "scheduled time"@en ;
+  rdfs:domain exv:FlightEvent ;
+  rdfs:range xsd:dateTime ;
+  rdfs:comment "The exact time for which the event is scheduled."@en .
+
+exv:estimated a rdf:Property ;
+  rdfs:label "estimated time"@en ;
+  rdfs:domain exv:FlightEvent ;
+  rdfs:range xsd:dateTime ;
+  rdfs:comment "The exact time for which the event is estimated."@en .
+
+exv:actual a rdf:Property ;
+  rdfs:label "actual time"@en ;
+  rdfs:domain exv:FlightEvent ;
+  rdfs:range xsd:dateTime ;
+  rdfs:comment "The exact time at which the event finally occured."@en .
+
+exv:visibility a rdf:Property ;
+  rdfs:label "visibility"@en ;
+  rdfs:domain exv:FlightEvent ;
+  rdfs:range rdf:langString ;
+  rdfs:comment "The description of the subjective visibility at the time of the event as observed by the captain of the flight."@en .
+
+exv:hasEvent a rdf:Property ;
+  rdfs:label "event during flight"@en ;
+  rdfs:domain exv:Flight ;
+  rdfs:range exv:FlightEvent .
+
+exv:hasDeparture a rdf:Property ;
+  rdfs:subPropertyOf exv:hasEvent ;
+  rdfs:label "flight departure event"@en .
+
+exv:hasArrival a rdf:Property ;
+  rdfs:subPropertyOf exv:hasEvent ;
+  rdfs:label "flight arrival event"@en .
+
+exv:code a rdf:Property ;
+  rdfs:domain exv:Airport ;
+  rdfs:range xsd:string ;
+  rdfs:label "IANA airport code"@en .
+
+exv:name a rdf:Property ;
+  rdfs:domain exv:Airport ;
+  rdfs:range rdf:langString ;
+  rdfs:label "International name of the airport"@en .
+
+exv:happenedAt a rdf:Property ;
+  rdfs:label "airport at which the event occured"@en ;
+  rdfs:domain exv:FlightEvent ;
+  rdfs:range exv:Airport .
