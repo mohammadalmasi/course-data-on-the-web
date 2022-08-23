@@ -1,6 +1,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix exv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#> .
 @prefix otherv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/machines#> .
 
@@ -20,33 +21,56 @@ exv:FlightEvent a rdfs:Class ;
 exv:Airport a rdfs:Class ;
   rdfs:label "Airport"@en .
 
+exv:Airline a rdfs:Class ;
+  rdfs:label "Airline"@en .
+
 exv:number a rdf:Property ;
   rdfs:label "flight number"@en ;
   rdfs:domain exv:Flight ;
   rdfs:range xsd:string ;
   rdfs:comment "The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'."@en .
 
+exv:duration a rdf:Property ;
+  rdfs:label "flight duration"@en ;
+  rdfs:domain exv:Flight ;
+  rdfs:range xsd:duration ;
+  rdfs:comment "The total temporal duration of the flight."@en .
+
 exv:registration a rdf:Property ;
   rdfs:domain exv:Aircraft ;
   rdfs:range xsd:string ;
-  rdfs:label "aircraft registration number"@en .
+  rdfs:label "registration number"@en ;
+  rdfs:comment "The unique number of the aircraft assigned by the airline operating the aircraft."@en .
 
 exv:serialNumber a rdf:Property ;
   rdfs:domain exv:Aircraft ;
-  rdfs:range xsd:string ;
-  rdfs:label "aircraft serial number"@en .
-
-exv:age a rdf:Property ;
-  rdfs:label "aircraft age"@en ;
-  rdfs:domain exv:Aircraft ;
   rdfs:range xsd:integer ;
-  rdfs:comment "The age of aircraft in years counted from the start of its operation on commercial flights. It is specified in months."@en .
+  rdfs:label "serial number"@en ;
+  rdfs:comment "The unique number of the aircraft assigned by the manufacturer."@en .
+
+exv:inOperationFrom a rdf:Property ;
+  rdfs:label "in operation from"@en ;
+  rdfs:domain exv:Aircraft ;
+  rdfs:range xsd:date ;
+  rdfs:comment "The date from which the aircraft has been in service."@en .
+
+exv:aircraftType a rdf:Property ;
+  rdfs:label "has aircraft type"@en ;
+  rdfs:domain exv:Aircraft ;
+  rdfs:range skos:Concept ;
+  rdfs:comment "The type of the aircraft construction from the code list of aircraft construction types."@en .
 
 exv:hasAircraft a rdf:Property ;
   rdfs:label "has aircraft"@en ;
   rdfs:domain exv:Flight ;
   rdfs:range exv:Aircraft ;
   rdfs:comment "The aircraft deployed on this flight."@en .
+
+exv:hasAirline a rdf:Property ;
+  rdfs:label "has airline"@en ;
+  rdfs:domain exv:Flight ;
+  rdfs:range exv:Airline ;
+  rdfs:comment "The airline operating this flight."@en .
 
 exv:scheduled a rdf:Property ;
   rdfs:label "scheduled time"@en ;
@@ -95,7 +119,7 @@ exv:name a rdf:Property ;
   rdfs:range rdf:langString ;
   rdfs:label "International name of the airport"@en .
 
-exv:happenedAt a rdf:Property ;
-  rdfs:label "airport at which the event occured"@en ;
+exv:location a rdf:Property ;
+  rdfs:label "The airport at which the event occured."@en ;
   rdfs:domain exv:FlightEvent ;
   rdfs:range exv:Airport .

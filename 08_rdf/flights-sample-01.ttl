@@ -24,11 +24,11 @@ ex-ev:xy1234dep a exv:FlightEvent ;
   exv:estimated "2022-07-07T15:45:00"^^xsd:dateTime ;
   exv:actual "2022-07-07T15:40:00"^^xsd:dateTime ;
   exv:visiblity "Foggy"@en ;
-  exv:happededAt ex-pt:PRG .
+  exv:happenedAt ex-pt:PRG .
 
 ex-ev:xy1234arr a exv:FlightEvent ;
   exv:scheduled "2022-07-07T17:51:00"^^xsd:dateTime ;
   exv:estimated "2022-07-07T18:00:00"^^xsd:dateTime ;
   exv:actual "2022-07-07T17:59:00"^^xsd:dateTime ;
   exv:visiblity "Clear-sky, windy"@en ;
-  exv:happededAt ex-pt:DUB .
+  exv:happenedAt ex-pt:DUB .
