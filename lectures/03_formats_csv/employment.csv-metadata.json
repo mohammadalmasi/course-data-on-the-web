@@ -20,13 +20,6 @@
             "datatype": "nonNegativeInteger",
             "required": true
         }],
-        "primaryKey": ["code", "year"],
-        "foreignKeys": [{
-            "columnReference": "code",
-            "reference": {
-                "schemaReference": "airports.csv-metadata.json",
-                "columnReference": "code"
-            }
-        }]
+        "primaryKey": ["code", "year"]
     }
 }

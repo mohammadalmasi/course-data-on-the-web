@@ -21,6 +21,7 @@
             "datatype": "string",
             "required": true
         },{
+            "name": "departure",
             "titles": "departure",
             "dc:description": "Exact actual departure date and time recorded after lift off.",
             "datatype": "dateTime",
@@ -36,19 +37,6 @@
             "datatype": "string",
             "required": false
         }],
-        "primaryKey": ["id", "departure"],
-        "foreignKeys": [{
-            "columnReference": "from",
-            "reference": {
-                "schemaReference": "airports.csv-metadata.json",
-                "columnReference": "code"
-            }
-        },{
-            "columnReference": "to",
-            "reference": {
-                "schemaReference": "airports.csv-metadata.json",
-                "columnReference": "code"
-            }
-        }]
+        "primaryKey": ["id", "departure"]
     }
 }

@@ -78,6 +78,7 @@
                 "datatype": "string",
                 "required": true
             },{
+                "name": "departure",
                 "titles": "departure",
                 "dc:description": "Exact actual departure date and time recorded after lift off.",
                 "datatype": "dateTime",
