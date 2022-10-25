@@ -51,7 +51,7 @@
             "foreignKeys": [{
                 "columnReference": "code",
                 "reference": {
-                    "schemaReference": "airports.csv-metadata.json",
+                    "resource": "airports.csv",
                     "columnReference": "code"
                 }
             }]
@@ -97,13 +97,13 @@
             "foreignKeys": [{
                 "columnReference": "from",
                 "reference": {
-                    "schemaReference": "airports.csv-metadata.json",
+                    "resource": "airports.csv",
                     "columnReference": "code"
                 }
             },{
                 "columnReference": "to",
                 "reference": {
-                    "schemaReference": "airports.csv-metadata.json",
+                    "resource": "airports.csv",
                     "columnReference": "code"
                 }
             }]

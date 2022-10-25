@@ -1,6 +1,6 @@
 {
     "@context": "http://www.w3.org/ns/csvw",
-    "url": "fake-sample-flights.csv",
+    "url": "flights.csv",
     "tableSchema": {
         "columns": [{
             "name": "id",
