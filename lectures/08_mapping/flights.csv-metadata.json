@@ -1,0 +1,96 @@
+{
+    "@id": "https://cu.opendata.cz/course-data-on-the-web/resource/flights",
+    "@context": [
+        "https://raw.githubusercontent.com/CLARIAH/COW/master/csvw.json",
+        {
+            "@language": "en",
+            "@base": "https://cu.opendata.cz/course-data-on-the-web/resource/flights/"
+        },{
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "dc": "http://purl.org/dc/terms/",
+            "flights": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#"
+        }
+    ],
+    "dialect": {
+        "delimiter": ",",
+        "encoding": "UTF-8",
+        "quoteChar": "\""
+    },
+    "url": "flights.csv",
+    "tableSchema": {
+        "aboutUrl": "flight/{departure}/{id}/{from}",
+        "primaryKey": "id",
+        "columns": [{
+            "name": "id",
+            "titles": "id",
+            "dc:description": "The unique flight ID.",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "flights:number"
+        },{
+            "virtual": "true",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "flights:Flight"
+        },{
+            "virtual": "true",
+            "propertyUrl": "flights:hasDeparture",
+            "valueUrl": "event/{departure}/{id}/departure"
+        },{
+            "virtual": "true",
+            "aboutUrl": "event/{departure}/{id}/departure",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "flights:FlightEvent"
+        },{
+            "virtual": "true",
+            "propertyUrl": "flights:hasArrival",
+            "valueUrl": "event/{departure}/{id}/arrival"
+        },{
+            "virtual": "true",
+            "aboutUrl": "event/{departure}/{id}/arrival",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "flights:FlightEvent"
+        },{
+            "name": "from",
+            "titles": "from",
+            "dc:description": "The code of the departure airport.",
+            "datatype": "string",
+            "required": true,
+            "aboutUrl": "event/{departure}/{id}/departure",
+            "propertyUrl": "flights:location",
+            "valueUrl": "airport/{from}"
+        },{
+            "name": "to",
+            "titles": "to",
+            "dc:description": "The code of the arrival airport.",
+            "datatype": "string",
+            "required": true,
+            "aboutUrl": "event/{departure}/{id}/arrival",
+            "propertyUrl": "flights:location",
+            "valueUrl": "airport/{to}"
+        },{
+            "name": "departure",
+            "titles": "departure",
+            "dc:description": "Exact actual departure date and time recorded after lift off.",
+            "datatype": "dateTime",
+            "required": false,
+            "aboutUrl": "event/{departure}/{id}/departure",
+            "propertyUrl": "flights:actual"
+        },{
+            "name": "arrival",
+            "titles": "arrival",
+            "dc:description": "Exact actual arrival date and time recorded after landing.",
+            "datatype": "dateTime",
+            "required": false,
+            "aboutUrl": "event/{departure}/{id}/arrival",
+            "propertyUrl": "flights:actual"
+        },{
+            "name": "visibility on arrival",
+            "titles": "visibility on arrival",
+            "dc:description": "Optional free textual description of visibility on arrival provided by the flight captain.",
+            "datatype": "string",
+            "required": false,
+            "aboutUrl": "event/{departure}/{id}/arrival",
+            "propertyUrl": "flights:visibility"
+        }]
+    }
+}

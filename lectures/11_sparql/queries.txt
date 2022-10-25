@@ -1,0 +1,7 @@
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+
+SELECT ?number
+WHERE {
+  <flight/2022-08-21/FI522/KEF> flv:number ?number .
+}

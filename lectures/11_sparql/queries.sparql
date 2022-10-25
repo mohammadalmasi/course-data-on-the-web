@@ -1,0 +1,267 @@
+# The number of the flight <flight/2022-08-21/FI522/KEF>
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?number
+WHERE {
+  <flight/2022-08-21/FI522/KEF> flv:number ?number .
+}
+
+# The aircraft deployed for the flight <flight/2022-08-21/FI522/KEF>
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?aircraft
+WHERE {
+  <flight/2022-08-21/FI522/KEF> flv:aircraft ?aircraft .
+}
+
+# Flights with the deployed aircraft <aircraft/TF-ICE>
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?flight
+WHERE {
+  ?flight flv:hasAircraft <aircraft/TF-ICE> .
+}
+
+# Aircrafts deployed for the flights with number "FI522"
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT *
+WHERE {
+  ?flight flv:number "FI522" ;
+    flv:hasAircraft ?aircraft .
+}
+
+# Distinct aircrafts deployed for the flights with number "FI634"
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT DISTINCT ?aircraft
+WHERE {
+  ?flight flv:number "FI634" ;
+    flv:hasAircraft ?aircraft .
+}
+
+# Numbers and scheduled arrival times of flights to Frankfurt Airport
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?flightNumber ?scheduledArrival
+WHERE {
+  ?flight flv:number ?flightNumber ;
+          flv:hasArrival ?event .
+  ?event flv:location <airport/FRA> ;
+         flv:scheduled ?scheduledArrival .
+}
+
+# Numbers and scheduled arrival times of flights to Frankfurt Airport with scheduled arrival before 16 Aug 2022
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?flightNumber ?scheduledArrival
+WHERE {
+  ?flight flv:number ?flightNumber ;
+          flv:hasArrival ?event .
+  ?event flv:location <airport/FRA> ;
+         flv:scheduled ?scheduledArrival .
+  FILTER (?scheduledArrival <= "2022-08-16"^^xs:date)
+}
+
+# Registration numbers and operation start dates of the aircrafts which have been in operation since a date between 2020 and 2022.
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?number ?date
+WHERE {
+  ?aircraft flv:registration ?number ;
+          flv:inOperationFrom ?date .
+  FILTER (year(?date)>=2020 && year(?date)<=2022)
+}
+
+# Registration numbers and operation start dates of the aircrafts which have been in operation since a date between 2020 and 2022.
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?number ?year
+WHERE {
+  ?aircraft flv:registration ?number ;
+          flv:inOperationFrom ?date .
+  FILTER (?year>=2020 && ?year<=2022)
+  BIND(year(?date) AS ?year)
+}
+
+# Fun stuff - Registration numbers and operation start dates of the aircrafts displayed as a timeline using Yasgui
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?eventLabel ?eventDate
+WHERE {
+  ?aircraft flv:registration ?eventLabel ;
+          flv:inOperationFrom ?eventDate .
+}
+
+# Fun stuff - Departures of flights with the deployed aircraft TF-ICE scheduled for 16 Aug 2022
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?eventDate ?eventLabel ?eventDescription ?eventLocation
+WHERE {
+  ?flight flv:number ?flightNumber ;
+    flv:hasAircraft <aircraft/TF-ICE> ;
+    flv:hasDeparture ?departure .
+
+  ?departure flv:location ?departureAirport ;
+    flv:scheduled ?scheduledDeparture .
+  FILTER (xs:date(?scheduledDeparture) = "2022-08-16"^^xs:date)
+  
+  ?departureAirport owl:sameAs ?departureAirportWD .
+
+  ?departureAirportWD rdfs:label ?departureAirportLabel ;
+    wdt:P238 ?departureAirportCode ;
+    wdt:P625 ?departureAirportLocation .
+  FILTER (lang(?departureAirportLabel) = "en")
+  
+  BIND(?scheduledDeparture AS ?eventDate)
+  BIND(?departureAirportLocation AS ?eventLocation)
+  BIND(CONCAT("Departure of flight ", ?flightNumber) AS ?eventLabel)
+  BIND(STRDT(CONCAT(
+    "<ul>",
+      "<li>Airport ", STR(?departureAirportLabel), " (", ?departureAirportCode, ")</li>",
+      "<li>Scheduled ", STR(?scheduledDeparture), "</li>",
+    "</ul>"
+  ), rdf:HTML) AS ?eventDescription)
+}
+ORDER BY ?eventDate
+
+# Flights with number FI522 with their aircraft and, optionally, flight duration.
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?flight ?aircraft ?duration
+WHERE {
+  ?flight flv:number "FI522" ;
+    flv:hasAircraft ?aircraft .
+  
+  OPTIONAL {
+    ?flight flv:duration ?duration .
+  }
+}
+
+# Flights with early departure or late arrival
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?flightNumber ?eventKind ?actualHours
+WHERE {
+  ?flight flv:number ?flightNumber .
+  {
+    ?flight flv:hasDeparture ?event .
+    ?event flv:actual ?actualDateTime .
+    BIND("dep" AS ?eventKind)
+    BIND(HOURS(?actualDateTime) AS ?actualHours)
+    FILTER(?actualHours >= 2 && ?actualHours <= 4)
+  } UNION {
+    ?flight flv:hasArrival ?event .
+    ?event flv:actual ?actualDateTime .
+    BIND("arr" AS ?eventKind)
+    BIND(HOURS(?actualDateTime) AS ?actualHours)
+    FILTER(?actualHours >= 23 || ?actualHours <= 1)
+  }
+}
+
+# Airports visited by the aircraft TF-ICE
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT DISTINCT ?flightNumber ?airport
+WHERE {
+  ?flight flv:number ?flighNumber ;
+          flv:hasAircraft <aircraft/TF-ICE> ;
+    (flv:hasDeparture|flv:hasArrival)/flv:location ?airport .
+}
+
+# Airports connected with TRD airport with a direct flight or via two flights (no time constraints applied)
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT DISTINCT ?targetAirport
+WHERE {
+  <airport/TRD> ^(flv:hasDeparture/flv:location)/flv:hasArrival/flv:location/(^(flv:hasDeparture/flv:location)/flv:hasArrival/flv:location)? ?targetAirport .
+}
+
+# Experiments with aggregation functions
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT (COUNT(*) AS ?totalFlights)
+  (COUNT(DISTINCT ?flightNumber) AS ?totalDistinctFlightNumbers)
+  (MAX(?duration) AS ?maxDuration)
+  (GROUP_CONCAT(DISTINCT ?flightNumber ; separator=" and ") AS ?flightNumbers)
+  (SAMPLE(?duration) AS ?sampleDuration)
+WHERE {
+  ?flight flv:number ?flightNumber ;
+    flv:duration ?duration ;
+    flv:hasAircraft <aircraft/TF-ICE> .
+}
+
+# For each aircraft, its total number of flights and max flight duration
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?aircraft (COUNT(*) AS ?totalFlights)
+  (MAX(?duration) AS ?maxDuration)
+WHERE {
+  ?flight flv:hasAircraft ?aircraft ;
+    flv:duration ?duration .
+}
+GROUP BY ?aircraft
+
+# Labels of the arrival airport of the flight FI633 on 18 Aug 2022 in all languages available in Wikidata
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?arrivalAirportLabel
+WHERE {  
+  <flight/2022-08-18/FI633/KEF> flv:hasArrival/flv:location/owl:sameAs ?airportWD .
+
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?airportWD rdfs:label ?arrivalAirportLabel .
+  }
+}
+
+# Labels from Wikidata and descriptions from DBpedia of the arrival airport of the flight FI633 on 18 Aug 2022 in available languages
+BASE <https://cu.opendata.cz/course-data-on-the-web/resource/flights/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX flv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#>
+
+SELECT ?arrivalAirportLabel ?arrivalAirportDescription
+WHERE {  
+  <flight/2022-08-18/FI633/KEF> flv:hasArrival/flv:location/owl:sameAs ?airportWD .
+
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?airportWD rdfs:label ?arrivalAirportLabel .
+  }
+  
+  SERVICE <https://dbpedia.org/sparql> {
+    ?airportDBpedia owl:sameAs ?airportWD ;
+      dbo:abstract ?arrivalAirportDescription .
+  }
+  
+  FILTER(LANG(?arrivalAirportLabel) = LANG(?arrivalAirportDescription))
+}

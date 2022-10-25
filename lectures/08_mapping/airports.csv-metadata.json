@@ -1,0 +1,54 @@
+{
+    "@id": "https://cu.opendata.cz/course-data-on-the-web/resource/airports",
+    "@context": [
+        "https://raw.githubusercontent.com/CLARIAH/COW/master/csvw.json",
+        {
+            "@language": "en",
+            "@base": "https://cu.opendata.cz/course-data-on-the-web/resource/flights/airport/"
+        },{
+            "dc": "http://purl.org/dc/terms/",
+            "flv": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#"
+        }
+    ],
+    "dialect": {
+        "delimiter": ",",
+        "encoding": "UTF-8",
+        "quoteChar": "\""
+    },
+    "url": "airports.csv",
+    "tableSchema": {
+        "aboutUrl": "{code}",
+        "primaryKey": "code",
+        "columns": [
+            {
+                "name": "code",
+                "titles": {
+                    "en": "code",
+                    "cs": "kód"
+                },
+                "dc:description": {
+                    "en": "The unique code of the airport.",
+                    "cs": "Unikátní kód letiště"
+                },
+                "datatype": "string",
+                "required": true,
+                "propertyUrl": "flv:airportCode"
+            },{
+                "name": "name",
+                "titles": {
+                    "en": "name",
+                    "cs": ["název", "jméno"]
+                },
+                "dc:description": "The unique name of the airport.",
+                "datatype": "string",
+                "required": true,
+                "lang": "en",
+                "propertyUrl": "flv:airportName"
+            },{
+                "virtual": true,
+                "propertyUrl": "rdf:type",
+                "valueUrl": "flv:Airport"
+            }
+        ]
+    }
+}

@@ -1,0 +1,90 @@
+{
+  "@context": {
+    "@vocab":"https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#",
+    "@base":"https://cu.opendata.cz/course-data-on-the-web/resource/flights/",
+    "xsd":"http://www.w3.org/2001/XMLSchema#",
+    "name": {
+      "@language":"en"
+    },
+    "time": {
+      "@id":"flv:actual",
+      "@type":"xsd:dateTime"
+    },
+    "departures": {
+      "@reverse":"flv:location",
+      "@context": {
+        "flight": {
+          "@reverse":"flv:hasDeparture"
+        }
+      }
+    },
+    "arrivals": {
+      "@reverse":"flv:location",
+      "@context": {
+        "flight": {
+          "@reverse":"flv:hasArrival"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id":"airport/PRG",
+      "@type":"Airport",
+      "code":"PRG",
+      "name":"Václav Havel Airport Prague",
+      "departures": [
+        {
+          "@id":"event/2022-07-07T15:40:00/XY1234/departure",
+          "@type":"FlightEvent",
+          "flight": {
+            "@id":"flight/2022-07-07T15:40:00/XY1234",
+            "@type":"Flight",
+            "number":"XY1234"
+          },
+          "time":"2022-07-07T15:40:00"
+        }
+      ],
+      "arrivals": [
+        {
+          "@id":"event/2022-08-07T10:21:00/AB9872/arrival",
+          "@type":"FlightEvent",
+          "flight": {
+            "@id":"flight/2022-08-07T10:21:00/AB9872",
+            "@type":"Flight",
+            "number":"AB9872"
+          }
+        }
+      ]
+    },{
+      "@id":"airport/DUB",
+      "@type":"Airport",
+      "code":"DUB",
+      "name":"Dublin Airport",
+      "departures": [
+        {
+            "@id":"event/2022-08-07T10:21:00/AB9872/departure",
+            "@type":"FlightEvent",
+            "flight": {
+              "@id":"flight/2022-08-07T10:21:00/AB9872",
+              "@type":"Flight",
+              "number":"AB9872"
+            },
+            "time":"2022-08-07T10:21:00"
+        }
+      ],
+      "arrivals": [
+        {
+          "@id":"event/2022-07-07T15:40:00/XY1234/arrival",
+          "@type":"FlightEvent",
+          "flight": {
+            "@id":"flight/2022-07-07T15:40:00/XY1234",
+            "@type":"Flight",
+            "number":"XY1234"
+          },
+          "time":"2022-07-07T17:59:00"
+        }
+      ]
+    }
+  ] 
+}

@@ -1,0 +1,112 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "tables": [{
+        "url": "airports.csv",
+        "tableSchema": {
+            "columns": [{
+                "name": "code",
+                "titles": {
+                    "en": "code",
+                    "cs": "kód"
+                },
+                "dc:description": {
+                    "en": "The unique code of the airport.",
+                    "cs": "Jednoznačný kód letiště"
+                },
+                "datatype": "string",
+                "required": true
+            },{
+                "titles": {
+                    "en": "name",
+                    "cs": ["název", "jméno"]
+                },
+                "dc:description": "The unique name of the airport.",
+                "datatype": "string",
+                "required": true
+            }],
+            "primaryKey": "code"
+        }
+    },{
+        "url": "employment.csv",
+        "tableSchema": {
+            "columns": [{
+                "name": "code",
+                "titles": "code",
+                "dc:description": "The code of the airport the employment is measured for.",
+                "datatype": "string",
+                "required": true
+            },{
+                "name": "year",
+                "titles": "year",
+                "dc:description": "The year of the measurement.",
+                "datatype": "gYear",
+                "required": true
+            },{
+                "titles": "number of employees",
+                "dc:description": "Measured employment at the airport and year.",
+                "datatype": "nonNegativeInteger",
+                "required": true
+            }],
+            "primaryKey": ["code", "year"],
+            "foreignKeys": [{
+                "columnReference": "code",
+                "reference": {
+                    "schemaReference": "airports.csv-metadata.json",
+                    "columnReference": "code"
+                }
+            }]
+        }
+    },{
+        "url": "flights.csv",
+        "tableSchema": {
+            "columns": [{
+                "name": "id",
+                "titles": "id",
+                "dc:description": "The unique flight ID.",
+                "datatype": "string",
+                "required": true
+            },{
+                "name": "from",
+                "titles": "from",
+                "dc:description": "The code of the departure airport.",
+                "datatype": "string",
+                "required": true
+            },{
+                "name": "to",
+                "titles": "to",
+                "dc:description": "The code of the arrival airport.",
+                "datatype": "string",
+                "required": true
+            },{
+                "titles": "departure",
+                "dc:description": "Exact actual departure date and time recorded after lift off.",
+                "datatype": "dateTime",
+                "required": false
+            },{
+                "titles": "arrival",
+                "dc:description": "Exact actual arrival date and time recorded after landing.",
+                "datatype": "dateTime",
+                "required": false
+            },{
+                "titles": "visiblity on arrival",
+                "dc:description": "Optional free textual description of visibility on arrival provided by the flight captain.",
+                "datatype": "string",
+                "required": false
+            }],
+            "primaryKey": ["id", "departure"],
+            "foreignKeys": [{
+                "columnReference": "from",
+                "reference": {
+                    "schemaReference": "airports.csv-metadata.json",
+                    "columnReference": "code"
+                }
+            },{
+                "columnReference": "to",
+                "reference": {
+                    "schemaReference": "airports.csv-metadata.json",
+                    "columnReference": "code"
+                }
+            }]
+        }
+    }]
+}
