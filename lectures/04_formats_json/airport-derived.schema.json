@@ -1,117 +1,55 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://my-public-url/civicstructure.schema.json",
+    "$id": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/airport-derived.schema.json",
     "title": "Airport",
-    "description": "An airport from the database of international civil airports.",
+    "description": "An airport from the database of international civil airports. The schema is derived from the schema for civic structures",
     "type": "object",
     "allOf": [
         {
-            ""
+            "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/civicstructure.schema.json"
+        },{
+            "properties": {
+                "code": {
+                    "$ref": "#/$defs/airport-code"
+                },
+                "departures": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "number": {
+                                "$ref": "#/$defs/flight-number"
+                            }
+                        },
+                        "required": ["number"]
+                    }
+                },
+                "arrivals": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "number": {
+                                "$ref": "#/$defs/flight-number"
+                            }
+                        },
+                        "required": ["number"]
+                    }
+                }
+            }
         }
     ],
-    "properties": {
-        "code": {
-            "$ref": "#/$defs/code"
-        },
-        "name": {
-            "$ref": "#/$defs/name"
-        },
-        "employment": {
-            "type": "array",
-            "description": "The yearly statistics of the number of employees.",
-            "items": {
-                "type": "object",
-                "description": "The employment statistics measuring the number of employees on the last day of the given year.",
-                "properties": {
-                    "year": {
-                        "type": "string",
-                        "description": "The year of the measurement."
-                    },
-                    "value": {
-                        "type": "integer",
-                        "description": "The measured value.",
-                        "exclusiveMinimum": 0
-                    }
-                },
-                "required": ["year","value"]
-            },
-            "minItems": 2
-        },
-        "departures": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "number": {
-                        "$ref": "#/$defs/number"
-                    },
-                    "time": {
-                        "$ref": "#/$defs/time",
-                        "title": "actual departure time",
-                        "description": "The actual time of the flight departure."
-                    },
-                    "to": {
-                        "$ref": "#/$defs/airport-base",
-                        "description": "The target destination airport of the flight."
-                    }
-                },
-                "required": ["number"]
-            }
-        },
-        "arrivals": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "number": {
-                        "$ref": "#/$defs/number"
-                    },
-                    "time": {
-                        "$ref": "#/$defs/time",
-                        "title": "actual arrival time",
-                        "description": "The actual time of the flight arrival."
-                    },
-                    "from": {
-                        "$ref": "#/$defs/airport-base",
-                        "description": "The origin airport of the flight."
-                    }
-                },
-                "required": ["number"]
-            }
-        }
-    },
-    "required": ["code"],
     "$defs": {
-        "code": {
+        "airport-code": {
             "type": "string",
             "title": "IATA code",
             "description": "The unique international IATA 3-letter code of the airport.",
             "minLength": 3,
             "maxLength": 3
         },
-        "name": {
-            "type": "string",
-            "title": "name",
-            "description": "The official name of the airport in english."
-        },
-        "number": {
+        "flight-number": {
             "type": "string",
             "description": "The unique number (code) that an airline assigns to the flight in its network."
-        },
-        "time": {
-            "type": "string",
-            "format": "date-time"
-        },
-        "airport-base": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "$ref": "#/$defs/code"
-                },
-                "name": {
-                    "$ref": "#/$defs/name"
-                }
-            }
         }
     }
 }

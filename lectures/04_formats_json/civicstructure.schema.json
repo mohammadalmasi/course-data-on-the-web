@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://my-public-url/civicstructure.schema.json",
+    "$id": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/civicstructure.schema.json",
     "title": "Civic Structure",
     "description": "A civic structure service public transport departures and arrivals.",
     "type": "object",
@@ -46,8 +46,7 @@
                         "$ref": "#/$defs/civicstructure-base",
                         "description": "The target destination of the trip."
                     }
-                },
-                "required": ["number"]
+                }
             }
         },
         "arrivals": {
@@ -61,11 +60,10 @@
                         "description": "The actual time of the trip arrival."
                     },
                     "from": {
-                        "$ref": "#/$defs/airport-base",
+                        "$ref": "#/$defs/civicstructure-base",
                         "description": "The origin destination of the trip."
                     }
-                },
-                "required": ["number"]
+                }
             }
         }
     },

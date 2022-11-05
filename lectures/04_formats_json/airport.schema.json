@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://my-public-url/airport.schema.json",
+    "$id": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/airport.schema.json",
     "title": "Airport",
     "description": "An airport from the database of international civil airports.",
     "type": "object",
