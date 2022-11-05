@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/station-derived.schema.json",
+    "title": "Station",
+    "description": "A station from the database of international train stations. The schema is derived from the schema for civic structures",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/civicstructure.schema.json"
+        },{
+            "properties": {
+                "departures": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "platform": {
+                                "$ref": "#/$defs/station-platform"
+                            }
+                        },
+                        "required": ["platform"]
+                    }
+                },
+                "arrivals": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "platform": {
+                                "$ref": "#/$defs/station-platform"
+                            }
+                        },
+                        "required": ["platform"]
+                    }
+                }
+            }
+        }
+    ],
+    "$defs": {
+        "station-platform": {
+            "type": "string",
+            "description": "The unique number (code) of the platform in the station."
+        }
+    }
+}
