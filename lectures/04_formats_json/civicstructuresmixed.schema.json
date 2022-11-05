@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/civicstructuresmixed.schema.json",
+    "title": "A list of civic structures",
+    "type": "array",
+    "anyOf": [
+        {
+            "allOf": [
+                {
+                    "properties":   {
+                        "type": {
+                            "const": "Airport"
+                        }
+                    }
+                },
+                "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/aiport-derived.schema.json"
+            ]
+        },{
+            "allOf": [
+                {
+                    "properties":   {
+                        "type": {
+                            "const": "Station"
+                        }
+                    }
+                },
+                "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/station-derived.schema.json"
+            ]
+        },
+        "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/civicstructure.schema.json"
+    ]
+}
