@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://my-public-url/airport.schema.json",
-    "title": "Airport",
-    "description": "An airport from the database of international civil airports.",
+    "$id": "https://my-public-url/civicstructure.schema.json",
+    "title": "Civic Structure",
+    "description": "A civic structure service public transport departures and arrivals.",
     "type": "object",
     "properties": {
         "code": {
@@ -37,17 +37,14 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "number": {
-                        "$ref": "#/$defs/number"
-                    },
                     "time": {
                         "$ref": "#/$defs/time",
                         "title": "actual departure time",
-                        "description": "The actual time of the flight departure."
+                        "description": "The actual time of the trip departure."
                     },
                     "to": {
-                        "$ref": "#/$defs/airport-base",
-                        "description": "The target destination airport of the flight."
+                        "$ref": "#/$defs/civicstructure-base",
+                        "description": "The target destination of the trip."
                     }
                 },
                 "required": ["number"]
@@ -58,17 +55,14 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "number": {
-                        "$ref": "#/$defs/number"
-                    },
                     "time": {
                         "$ref": "#/$defs/time",
                         "title": "actual arrival time",
-                        "description": "The actual time of the flight arrival."
+                        "description": "The actual time of the trip arrival."
                     },
                     "from": {
                         "$ref": "#/$defs/airport-base",
-                        "description": "The origin airport of the flight."
+                        "description": "The origin destination of the trip."
                     }
                 },
                 "required": ["number"]
@@ -79,25 +73,23 @@
     "$defs": {
         "code": {
             "type": "string",
-            "title": "IATA code",
-            "description": "The unique international IATA 3-letter code of the airport.",
-            "minLength": 3,
-            "maxLength": 3
+            "title": "code",
+            "description": "The unique international code of the civic structure."
         },
         "name": {
             "type": "string",
             "title": "name",
-            "description": "The official name of the airport in english."
+            "description": "The official name of the civic structure in english."
         },
         "number": {
             "type": "string",
-            "description": "The unique number (code) that an airline assigns to the flight in its network."
+            "description": "The unique number (code) that assigned to the tripe in the transport network."
         },
         "time": {
             "type": "string",
             "format": "date-time"
         },
-        "airport-base": {
+        "civicstructure-base": {
             "type": "object",
             "properties": {
                 "code": {
