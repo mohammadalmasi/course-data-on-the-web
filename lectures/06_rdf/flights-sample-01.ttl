@@ -14,21 +14,22 @@ ex-fl:xy1234 a exv:Flight ;
 ex-ai:457854124 a exv:Aircraft ;
   exv:registration "OK-ABC" ;
   exv:serialNumber "457854124" ;
-  exv:age 38 .
+  exv:inOperationFrom "1997-12-08"^^xsd:date .
 
 ex-pt:PRG exv:code "PRG" ;
   exv:name "Václav Havel Airport Prague"@en, "Letiště Václava Havla Praha"@cs .
+
+ex-pt:DUB exv:code "DUB" ;
+  exv:name "Dublin Airport"@en .
 
 ex-ev:xy1234dep a exv:FlightEvent ;
   exv:scheduled "2022-07-07T15:20:00"^^xsd:dateTime ;
   exv:estimated "2022-07-07T15:45:00"^^xsd:dateTime ;
   exv:actual "2022-07-07T15:40:00"^^xsd:dateTime ;
-  exv:visiblity "Foggy"@en ;
-  exv:happenedAt ex-pt:PRG .
+  exv:location ex-pt:PRG .
 
 ex-ev:xy1234arr a exv:FlightEvent ;
   exv:scheduled "2022-07-07T17:51:00"^^xsd:dateTime ;
   exv:estimated "2022-07-07T18:00:00"^^xsd:dateTime ;
   exv:actual "2022-07-07T17:59:00"^^xsd:dateTime ;
-  exv:visiblity "Clear-sky, windy"@en ;
-  exv:happenedAt ex-pt:DUB .
+  exv:location ex-pt:DUB .

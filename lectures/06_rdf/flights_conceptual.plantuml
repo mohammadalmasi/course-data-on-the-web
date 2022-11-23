@@ -1,0 +1,34 @@
+@startuml
+  class Flight {
+    number
+    duration
+  }
+
+  class Aircraft {
+    registration
+    serial number
+    in operation from
+  }
+
+  class Airline {
+
+  }
+
+  class Airport {
+    code
+    name
+  }
+
+  class FlightEvent {
+    scheduled time
+    estimated time
+    actual time
+  }
+
+  Flight --left> Aircraft : has aircraft
+  Flight -right-> Airline : has airline
+  Flight --> FlightEvent : has departure
+  Flight --> FlightEvent : has arrival
+  Flight --> FlightEvent : has event
+  FlightEvent -right-> Airport : location
+@enduml

@@ -90,12 +90,6 @@ exv:actual a rdf:Property ;
   rdfs:range xsd:dateTime ;
   rdfs:comment "The exact time at which the event finally occured."@en .
 
-exv:visibility a rdf:Property ;
-  rdfs:label "visibility"@en ;
-  rdfs:domain exv:FlightEvent ;
-  rdfs:range rdf:langString ;
-  rdfs:comment "The description of the subjective visibility at the time of the event as observed by the captain of the flight."@en .
-
 exv:hasEvent a rdf:Property ;
   rdfs:label "event during flight"@en ;
   rdfs:domain exv:Flight ;

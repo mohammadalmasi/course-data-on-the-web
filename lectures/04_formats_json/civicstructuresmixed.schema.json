@@ -42,7 +42,7 @@
                         },
                         "required": ["type"]
                     },{
-                        "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/station-derived.schema.json"
+                        "$ref": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/civicstructure.schema.json"
                     }
                 ]
             }

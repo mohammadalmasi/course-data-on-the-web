@@ -1,0 +1,43 @@
+@startuml
+    class Flight {
+        callSign
+        adsbID
+        actualDepartureTime
+        plannedDepartureTime
+        publishedDepartureTime
+        actualArrivalTime
+        plannedArrivalTime
+        publishedArrivalTime
+    }
+
+    class Airport {
+        airportName
+        faaAirportCode
+        iataAirportCode
+        icaoAirportCode
+        isWeatherReportingStation
+    }
+
+    class OperationalRunway {
+        touchdownPoint
+        runwayID
+    }
+
+    class Aircraft {
+        aircraftSerialNumber
+        numberOfEngines
+        numberOfSeats
+    }
+
+    class PlannedFlightRoute {
+        flighRouteString
+        planFilingTime
+    }
+
+    Flight --> Airport : departureAirport
+    Flight --> Airport : arrivalAirport
+    Flight --> OperationalRunway : departureRunway
+    Flight --> OperationalRunway : arrivalRunway
+    Flight --> Aircraft : aircraftFlown
+    Flight -right-> PlannedFlightRoute : hasPlannedRoute
+@enduml

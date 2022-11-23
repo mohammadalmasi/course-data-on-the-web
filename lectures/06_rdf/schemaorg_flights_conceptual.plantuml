@@ -1,0 +1,47 @@
+    @startuml
+    class Thing {
+        identifier
+        name
+        alternateName
+        description
+    }
+
+    class Intangible
+
+    class Trip {
+        arrivalTime
+        departureTime
+    }
+
+    class Flight {
+        flightNumber
+        departureGate
+        departureTerminal
+        arrivalGate
+        arrivalTerminal
+        estimatedFlightDuration
+        flightDistance
+        mealService
+        webCheckinTime
+    }
+
+    class Airport {
+        iataCode
+        icaoCode
+    }
+
+    Intangible --|> Thing
+    Trip -left-|> Intangible
+    Flight -left-|> Trip
+
+    Airport --|> CivicStructure
+    CivicStructure -left-|> Place
+    Place -left-|> Thing
+
+    Trip --> Place : itinerary
+
+    Flight --> Vehicle : aircraft
+    Flight --> Airport : departureAirport
+    Flight --> Airport : arrivalAirport
+    Flight --> Organization : provider 
+@enduml
