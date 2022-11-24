@@ -4,8 +4,10 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix exv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/> .
 @prefix otherv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/machines/> .
+@prefix schema: <http://schema.org/> .
 
 exv:Flight a rdfs:Class ;
+  rdfs:subClassOf schema:Flight ;
   rdfs:label "International flight"@en ;
   rdfs:comment "An international passenger flight."@en .
 
@@ -19,18 +21,22 @@ exv:FlightEvent a rdfs:Class ;
   rdfs:comment "Any event that may occur during a flight."@en .
 
 exv:Airport a rdfs:Class ;
+  rdfs:equivalentClass schema:Airport ;
   rdfs:label "Airport"@en .
 
 exv:Airline a rdfs:Class ;
+  rdfs:subClassOf schema:Organization ;
   rdfs:label "Airline"@en .
 
 exv:number a rdf:Property ;
+  rdfs:subPropertyOf schema:flightNumber ;
   rdfs:label "flight number"@en ;
   rdfs:domain exv:Flight ;
   rdfs:range xsd:string ;
   rdfs:comment "The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'."@en .
 
 exv:duration a rdf:Property ;
+  rdfs:subPropertyOf schema:estimatedFlightDuration ;
   rdfs:label "flight duration"@en ;
   rdfs:domain exv:Flight ;
   rdfs:range xsd:duration ;
@@ -67,6 +73,7 @@ exv:hasAircraft a rdf:Property ;
   rdfs:comment "The aircraft deployed on this flight."@en .
 
 exv:hasAirline a rdf:Property ;
+  rdfs:subPropertyOf schema:provider ;
   rdfs:label "has airline"@en ;
   rdfs:domain exv:Flight ;
   rdfs:range exv:Airline ;
@@ -104,6 +111,7 @@ exv:hasArrival a rdf:Property ;
   rdfs:label "has arrival"@en .
 
 exv:code a rdf:Property ;
+  rdfs:equivalentProperty schema:iataCode ;
   rdfs:domain exv:Airport ;
   rdfs:range xsd:string ;
   rdfs:label "IANA code"@en .
