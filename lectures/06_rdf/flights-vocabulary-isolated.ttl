@@ -111,7 +111,7 @@ exv:code a rdf:Property ;
 exv:name a rdf:Property ;
   rdfs:domain exv:Airport ;
   rdfs:range rdf:langString ;
-  rdfs:label "name"@en .
+  rdfs:label "name"@en ;
   rdfs:comment "International name of the airport"@en .
 
 exv:location a rdf:Property ;
