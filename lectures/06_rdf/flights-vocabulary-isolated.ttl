@@ -6,8 +6,8 @@
 @prefix otherv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/machines#> .
 
 exv:Flight a rdfs:Class ;
-  rdfs:label "An international passenger flight."@en ;
-  rdfs:commnet "An international passenger flight."@en .
+  rdfs:label "International flight"@en ;
+  rdfs:comment "An international passenger flight."@en .
 
 exv:Aircraft a rdfs:Class ;
   rdfs:subClassOf otherv:FlyingMachine ;
@@ -97,23 +97,25 @@ exv:hasEvent a rdf:Property ;
 
 exv:hasDeparture a rdf:Property ;
   rdfs:subPropertyOf exv:hasEvent ;
-  rdfs:label "flight departure event"@en .
+  rdfs:label "has departure"@en .
 
 exv:hasArrival a rdf:Property ;
   rdfs:subPropertyOf exv:hasEvent ;
-  rdfs:label "flight arrival event"@en .
+  rdfs:label "has arrival"@en .
 
 exv:code a rdf:Property ;
   rdfs:domain exv:Airport ;
   rdfs:range xsd:string ;
-  rdfs:label "IANA airport code"@en .
+  rdfs:label "IANA code"@en .
 
 exv:name a rdf:Property ;
   rdfs:domain exv:Airport ;
   rdfs:range rdf:langString ;
-  rdfs:label "International name of the airport"@en .
+  rdfs:label "name"@en .
+  rdfs:comment "International name of the airport"@en .
 
 exv:location a rdf:Property ;
-  rdfs:label "The airport at which the event occured."@en ;
+  rdfs:label "has location."@en ;
+  rdfs:label "Airport where the event happened."@en ;
   rdfs:domain exv:FlightEvent ;
   rdfs:range exv:Airport .
