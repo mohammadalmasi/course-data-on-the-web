@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "67176e89-883a-4bff-9d6f-eb802fa5c75d",
+		"name": "Data on the Web Course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Flights",
+			"item": [
+				{
+					"name": "Flight FI635 2022-08-19",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Aircraft TF-ICE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/turtle",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://cu.opendata.cz/course-data-on-the-web/resource/flights/aircraft/TF-ICE",
+							"protocol": "https",
+							"host": [
+								"cu",
+								"opendata",
+								"cz"
+							],
+							"path": [
+								"course-data-on-the-web",
+								"resource",
+								"flights",
+								"aircraft",
+								"TF-ICE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flight class",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/turtle",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/Flight",
+							"protocol": "https",
+							"host": [
+								"cu",
+								"opendata",
+								"cz"
+							],
+							"path": [
+								"course-data-on-the-web",
+								"vocabulary",
+								"flights",
+								"Flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Serial number property",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/turtle",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/Flight",
+							"protocol": "https",
+							"host": [
+								"cu",
+								"opendata",
+								"cz"
+							],
+							"path": [
+								"course-data-on-the-web",
+								"vocabulary",
+								"flights",
+								"Flight"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Environment Agency Bathing Water Quality Monitoring",
+			"item": [
+				{
+					"name": "Ringstead Bay sample assessment for 1995-W20",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/turtle",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://environment.data.gov.uk/data/bathing-water-quality/in-season/sample/point/20300/date/19950519/time/105500/recordDate/19950519",
+							"protocol": "https",
+							"host": [
+								"environment",
+								"data",
+								"gov",
+								"uk"
+							],
+							"path": [
+								"data",
+								"bathing-water-quality",
+								"in-season",
+								"sample",
+								"point",
+								"20300",
+								"date",
+								"19950519",
+								"time",
+								"105500",
+								"recordDate",
+								"19950519"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sampling point at Ringstead Bay",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/turtle",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew/20300",
+							"protocol": "http",
+							"host": [
+								"location",
+								"data",
+								"gov",
+								"uk"
+							],
+							"path": [
+								"so",
+								"ef",
+								"SamplingPoint",
+								"bwsp.eaew",
+								"20300"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dorset",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/turtle",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://statistics.data.gov.uk/id/statistical-geography/E06000059",
+							"protocol": "http",
+							"host": [
+								"statistics",
+								"data",
+								"gov",
+								"uk"
+							],
+							"path": [
+								"id",
+								"statistical-geography",
+								"E06000059"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "European Patent Office",
+			"item": [
+				{
+					"name": "Publication EP 0040419 B1",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nomisma",
+			"item": [
+				{
+					"name": "Trajan",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DBpedia Trajan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://dbpedia.org/resource/Trajan",
+							"protocol": "http",
+							"host": [
+								"dbpedia",
+								"org"
+							],
+							"path": [
+								"resource",
+								"Trajan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
