@@ -1,0 +1,44 @@
+{
+    "@context": [
+        "https://raw.githubusercontent.com/SEMICeu/DCAT-AP/2.1.1/releases/2.1.1/dcat-ap_2.1.1.jsonld",
+        {
+            "@base": "https://cu.opendata.cz/course-data-on-the-web/resource/"
+        }
+    ],
+    "@id": "catalog/benches",
+    "@type": "Catalogue",
+    "title": "Benches Catalog",
+    "description": "This catalog records metadata about datasets with benches in German cities",
+    "publisher": "https://github.com/martinnec",
+    "dataset": [
+        {
+            "@id": "dataset/benches/munich_and_passau",
+            "@type": "Dataset",
+            "title": "Benches in Munich and Passau",
+            "description": "This dataset contains detailed information about public benches in Munich and Passau",
+            "datasetDistribution": [
+                {
+                    "@id": "distribution/benches/munich_and_passau/csv",
+                    "@type": "Distribution",
+                    "downloadURL": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/03_formats_csv/airports.csv",
+                    "mediaType": "http://www.iana.org/assignments/media-types/text/csv",
+                    "schema": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/03_formats_csv/airports.csv-metadata.json"
+                }
+            ]
+        },{
+            "@id": "dataset/benches/berlin_and_regensburg",
+            "@type": "Dataset",
+            "title": "Benches in Berlin and Regensburg",
+            "description": "This dataset contains detailed information about public benches in Berlin and Regensburg",
+            "datasetDistribution": [
+                {
+                    "@id": "distribution/benches/berlin_and_regensburg/json",
+                    "@type": "Distribution",
+                    "downloadURL": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/airport.json",
+                    "mediaType": "http://www.iana.org/assignments/media-types/application/json",
+                    "schema": "https://raw.githubusercontent.com/martinnec/course-data-on-the-web/main/lectures/04_formats_json/airport.schema.json"
+                }
+            ]
+        }
+    ]
+}

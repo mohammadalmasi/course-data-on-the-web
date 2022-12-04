@@ -123,7 +123,7 @@ exv:name a rdf:Property ;
   rdfs:comment "International name of the airport"@en .
 
 exv:location a rdf:Property ;
-  rdfs:label "has location."@en ;
-  rdfs:label "Airport where the event happened."@en ;
+  rdfs:label "has location"@en ;
+  rdfs:comment "Airport where the event happened."@en ;
   rdfs:domain exv:FlightEvent ;
   rdfs:range exv:Airport .

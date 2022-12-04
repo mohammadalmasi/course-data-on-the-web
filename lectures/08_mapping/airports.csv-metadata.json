@@ -7,7 +7,7 @@
             "@base": "https://cu.opendata.cz/course-data-on-the-web/resource/flights/airport/"
         },{
             "dc": "http://purl.org/dc/terms/",
-            "flv": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#"
+            "flv": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/"
         }
     ],
     "dialect": {
@@ -32,7 +32,7 @@
                 },
                 "datatype": "string",
                 "required": true,
-                "propertyUrl": "flv:airportCode"
+                "propertyUrl": "flv:code"
             },{
                 "name": "name",
                 "titles": {
@@ -43,7 +43,7 @@
                 "datatype": "string",
                 "required": true,
                 "lang": "en",
-                "propertyUrl": "flv:airportName"
+                "propertyUrl": "flv:name"
             },{
                 "virtual": true,
                 "propertyUrl": "rdf:type",

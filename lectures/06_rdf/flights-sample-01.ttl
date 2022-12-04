@@ -1,5 +1,5 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix exv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#> .
+@prefix exv: <https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/> .
 @prefix ex-fl: <https://cu.opendata.cz/course-data-on-the-web/resource/flights/flight/> .
 @prefix ex-ai: <https://cu.opendata.cz/course-data-on-the-web/resource/flights/aircraft/> .
 @prefix ex-ev: <https://cu.opendata.cz/course-data-on-the-web/resource/flights/event/> .

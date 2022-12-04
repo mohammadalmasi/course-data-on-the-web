@@ -1,6 +1,6 @@
 {
   "@context": {
-    "@vocab":"https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#",
+    "@vocab":"https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/",
     "@base":"https://cu.opendata.cz/course-data-on-the-web/resource/flights/",
     "xsd":"http://www.w3.org/2001/XMLSchema#",
     "name": {

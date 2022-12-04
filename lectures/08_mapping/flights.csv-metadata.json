@@ -8,7 +8,7 @@
         },{
             "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "dc": "http://purl.org/dc/terms/",
-            "flights": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights#"
+            "flights": "https://cu.opendata.cz/course-data-on-the-web/vocabulary/flights/"
         }
     ],
     "dialect": {
